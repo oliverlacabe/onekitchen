@@ -1,0 +1,277 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #ddd;
+}
+
+.start{
+	background-image: url(images/kitchen.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.body{
+	width: 100%;
+	height: 1000px;
+	float: left;
+	color: #fff;
+	background: rgba(0,0,0,.8);
+}
+
+.sidebar{
+	width: 300px;
+	min-height: 500px;
+	margin:0;
+	margin-left: 50px;
+	background: rgba(0,0,0,.5);
+	float: left;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px #aaa;
+}
+
+.menu-landing{
+	float: right;
+}
+
+.lbl-login{
+	color: #bbb;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	font-size: 24px;
+	font-weight: normal;
+	cursor: pointer;
+}
+.lbl-login:hover, .lbl-login:active, .lbl-login:visited{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	color: #fff;
+	text-decoration: none;
+	border: none;
+}
+.landing-container{
+	float: right;
+	margin: 20px 50px;
+	right: 0;
+	top: 0;
+	position: fixed;
+}
+.title{
+	color: #9F90AB;
+	font-size: 100px;
+	float: right;
+	margin-top: 200px;
+}
+
+.title strong{
+	color: #FFB695;
+}
+.title-small{
+	color: #fff;
+	float: right;
+	margin-top: -10px;
+}
+
+.img-login{
+	width: 150px;
+	height: 150px;
+}
+.btn-login{
+	padding: 10px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	background-color: #B84B14;
+	color: #FFAA7F;
+}
+.btn-login:hover{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	background-color: #D65C1F;
+	color: #fff;
+}
+.btn-close{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	padding: 10px;
+	background-color: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+}
+.btn-close:hover{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	background-color: #fff;
+	color: #777;
+}
+
+.form-control:focus{
+	box-shadow: 0px 0px 10px orange;
+	border-color: orange;
+}
+.resto-logo{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	opacity: .7;
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 20px #fff;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+.resto-logo:hover{
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	opacity: 1;
+}
+
+.sidebar-container{
+	padding: 30px 30px 30px 30px;
+	text-align: center;
+	border-bottom: 1px dotted #888;
+}
+
+.simple-label{
+	color: #bbb;
+	font-weight: normal;
+}
+
+.sidebar-footer{
+	padding: 10px;
+	text-align: center;
+}
+
+.btn-toggle{
+	top: 0;
+	position: fixed;
+	margin-left: -25px;
+	border-radius: 0px 20px 20px 0px;
+	z-index: 6;
+}
+
+.btn-account{
+	top: 0;
+	right: 0;
+	position: fixed;
+	margin-left: -35px;
+	border-radius: 20px 0px 0px 20px;
+	z-index: 6;
+}
+.body-header{
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	width: 100%;
+	position: fixed;
+	height: 35px;
+	background: linear-gradient(#444, #222, #000, #222, #444);
+	z-index: 5;
+}
+
+.reset{
+	margin: 0;
+	padding: 0;
+}
+
+.title-normal{
+	color: #9F90AB;
+	text-shadow: 1px 0px 1px #fff;
+}
+
+.a-label{
+	padding: 5px;
+}
+
+.tab-pane{
+	padding: 10px;
+}
+.center{
+	text-align: center;
+}
+
+.right{
+	text-align: right;
+}
+
+.jumbotron{
+	background-color: rgb(212,74,72);
+	padding: 10px;
+	margin-top: -20px;
+	margin-bottom: 0px;
+}
+
+.logo{
+	height: 70px;
+}
+
+h1.welcome{
+	color: #FFF;
+	text-shadow: 0px 0px 5px #000;
+}
+
+.thumb{
+	width: 100%;
+	border-radius: 3px;
+}
+
+.sub-title{
+	padding-top: 10px;
+	border-top: 2px solid orange;
+	background-color: rgb(212,74,72);
+}
+
+.a-tab{
+	color: #FFF;
+}
+
+.a-tab:hover{
+	color: #555;
+}
+
+.m-label{
+	color: #FFF;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.resto-body{
+	background-color: #FFF;
+}
+
+.p-bg{
+	font-size: 24px;
+	text-align: center;
+	padding: 10px 40px 
+}
+
+.round{
+	width: 100%;
+	box-shadow: 0px 0px 5px #555;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.cart{
+	font-size: 12px;
+}
+
+.err_msg{
+	display: none;
+}
+
+
+

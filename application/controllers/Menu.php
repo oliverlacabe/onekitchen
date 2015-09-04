@@ -1,6 +1,6 @@
-<?php 
+<?php
 /**
-* 
+*
 */
 class Menu extends CI_Controller
 {
@@ -53,13 +53,37 @@ class Menu extends CI_Controller
 		}
 	}
 
+	function add_menu(){
+
+		$data = array(
+			'menu_name'  => $this->input->post('menuname'),
+			'menu_owner' => $this->input->post('owner'),
+			'price' 	 => $this->input->post('price'),
+			'category' 	 => $this->input->post('category')
+		);
+
+		$this->load->model('Model_Menu');
+
+		$check = $this->Model_Menu->check_menu($this->input->post('menu_name'));
+
+		if ($check > 0) {
+			echo "err1";
+		}
+		else{
+
+			$this->Model_Menu->add_menu($data);
+	        $this->load->view('menu/_menu');
+
+		}
+	}
+
 	function append_ing(){
 		$append = "";
 
 		$this->load->model('Model_Menu');
 
-		$ing = $this->input->post('ingredient');
-		$qty = $this->input->post('quantity');
+		$ing = $this->input->post('ing');
+		$qty = $this->input->post('qty');
 
 		$res = $this->Model_Menu->get_specific_ing($ing);
 

@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Model_Menu extends CI_Model
 {
-	
+
 	function add_ing($data){
 		$this->db->insert('item', $data);
 	}
@@ -42,6 +42,26 @@ class Model_Menu extends CI_Model
 		$this->db->where('cat_name', $cat);
 		$this->db->select('id');
 		return $this->db->get('category')->num_rows();
+	}
+
+	function get_menu(){
+		$query = $this->db->query('SELECT a.*, b.cat_name, c.restaurant_name
+								   FROM menu a, category b, restaurant c
+								   WHERE a.category = b.id
+								   AND a.menu_owner = c.id
+								   ORDER BY a.menu_name
+		');
+		return $query->result_array();
+	}
+
+	function check_menu($menu){
+		$this->db->where('menu_name', $menu);
+		$this->db->select('id');
+		return $this->db->get('menu')->num_rows();
+	}
+
+	function add_menu($data){
+		$this->db->insert('menu', $data);
 	}
 }
 

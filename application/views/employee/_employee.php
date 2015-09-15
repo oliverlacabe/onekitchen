@@ -1,6 +1,14 @@
 
 <div class="container-fluid">
- <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#_add_emp">Add Employee</button><br/><br/>
+ <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#_add_emp">Add Employee</button>
+ <div class="col-md-4 pull-right">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for Employee">
+        <span class="input-group-btn">
+          <button class="btn btn-warning" type="button"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+    </div>
+  </div><br/><br/> 
 <div class="table-responsive">
   <div id="emp_table">
     <?php $this->load->view('employee/tables/emp_table'); ?>

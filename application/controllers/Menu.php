@@ -13,12 +13,12 @@ class Menu extends CI_Controller
 	function add_ing(){
 		$data = array(
 			'ingredient_name' => $this->input->post('ingredient'),
-			'type' 			  => 'ingredient'
+			'type' 			  => $this->input->post('type')
 		);
 
 		$this->load->model('Model_Menu');
 
-		$check = $this->Model_Menu->check_ing($this->input->post('ingredient'));
+		$check = $this->Model_Menu->check_ing($this->input->post('ingredient'), $this->input->post('type'));
 
 		if ($check > 0) {
 			echo "err1";
@@ -64,14 +64,25 @@ class Menu extends CI_Controller
 
 		$this->load->model('Model_Menu');
 
-		$check = $this->Model_Menu->check_menu($this->input->post('menu_name'));
+		$check = $this->Model_Menu->check_menu($this->input->post('menuname'));
 
 		if ($check > 0) {
 			echo "err1";
 		}
+		elseif (!$this->input->post('menu_ing')) {
+			echo "err2";
+		}
 		else{
+			$ing = $this->input->post('menu_ing');
+			$res = $this->Model_Menu->add_menu($data);
+			foreach ($ing as $key => $value) {
+				$data = array(
+					'menu' => $res,
+					'ing'  => $value
+				);
+				$this->Model_Menu->add_menu_ing($data);
+			}
 
-			$this->Model_Menu->add_menu($data);
 	        $this->load->view('menu/_menu');
 
 		}
@@ -102,6 +113,27 @@ class Menu extends CI_Controller
 		}
 
 	   echo $append;
+	}
+
+	function view_ing(){
+	    $this->load->model('Model_Menu');
+		$data = array('id' => $this->input->post('id'));
+		$this->load->view('menu/_ing_list', $data);
+	}
+
+	function delete_menu(){
+		$this->load->model('Model_Menu');
+		$this->Model_Menu->delete_menu($this->input->post('id'));
+	}
+
+	function delete_ing(){
+		$this->load->model('Model_Menu');
+		$this->Model_Menu->delete_ing($this->input->post('id'));
+	}
+
+	function delete_cat(){
+		$this->load->model('Model_Menu');
+		$this->Model_Menu->delete_cat($this->input->post('id'));
 	}
 }
  ?>

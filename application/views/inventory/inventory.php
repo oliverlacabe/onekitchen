@@ -58,6 +58,7 @@
     </div>
 
     <?php $this->load->view('templates/footer'); ?>
+    <script src = "<?php echo base_url('assets/js/ajax/inventory_ajax.js'); ?>"></script>
 
 </body>
 </html>

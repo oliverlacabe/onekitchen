@@ -9,7 +9,7 @@
         <td><?php echo $val['cat_name']; ?></td>
         <td width="200px;">
           <a class="label label-primary a-label" href="">Edit <span class="glyphicon glyphicon-pencil"></span></a>
-          <a class="label label-danger a-label" href="">Delete <span class="glyphicon glyphicon-trash"></span></a>
+          <a class="label label-danger a-label delete_cat" data-param="<?php echo $val['id']; ?>" >Delete <span class="glyphicon glyphicon-trash"></span></a>
         </td>
       </tr>
   <?php endforeach ?>

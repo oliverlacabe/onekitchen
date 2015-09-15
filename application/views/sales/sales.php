@@ -20,11 +20,15 @@
                         
                         <ul class="nav nav-tabs">
                           <li class="active"><a href="#sales" data-toggle="tab">Billing</a></li>
+                          <li><a href="#_bill_list" data-toggle="tab">Bill List</a></li>
                           <li><a href="#_sales2" data-toggle="tab">Sales</a></li>
                         </ul>
                         <div class="tab-content" style="background-color: #fff">
                           <div class="tab-pane fade in active" id="sales">
                             <?php $this->load->view('sales/_sales') ?>
+                          </div>
+                           <div class="tab-pane fade" id="_bill_list">
+                            <?php $this->load->view('sales/_bill_list') ?>
                           </div>
                           <div class="tab-pane fade" id="_sales2">
                             <?php $this->load->view('sales/_sales2') ?>
@@ -40,6 +44,6 @@
     </div>
 
     <?php $this->load->view('templates/footer'); ?>
-
+    <script src = "<?php echo base_url('assets/js/ajax/sales_ajax.js'); ?>"></script>
 </body>
 </html>

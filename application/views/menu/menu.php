@@ -22,7 +22,15 @@
 
                           <div class="tab-content" style="background-color: #fff">
                             <div class="tab-pane fade in active" id="menu">
-                              <button class="btn btn-warning pull-right" data-toggle="modal" data-target="#menu_modal" >Add Menu</button>
+                              <button class="btn btn-warning" data-toggle="modal" data-target="#menu_modal" >Add Menu</button>
+                              <div class="col-md-4 pull-right">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Search Menu">
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-warning" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div>
+                              </div>
                               <br/><br/>
                               <div class="table-responsive" id="menu_list">
                                 <?php $this->load->view('menu/_menu'); ?>
@@ -35,13 +43,23 @@
                               <div id="ing_alert"></div>
                               <form class="form form-horizontal" id="ing_form" role="form" onsubmit="return false">
                                 <table class="table table-striped">
-                                  <tr><th colspan="3">Add Ingredient Form</th></tr>
+                                  <tr>
+                                    <th colspan="5">Add Ingredient Form</th>
+                                  </tr>
                                   <tr>
                                     <td width="50px;">Ingredient</td>
                                     <td>
                                       <input class="form-control" type="text" name="ingredient" placeholder="ingredient" value="" required>
                                     </td>
-                                    <td><button type="submit" class="btn btn-warning btn-block">Add</button></td>
+                                    <td width="50px;">Type</td>
+                                    <td width="250px;">
+                                      <select class="form-control" name="type" required>
+                                        <option value="0">-Select Type-</option>
+                                        <option>Before Prep</option>
+                                        <option>After Prep</option>
+                                      </select>
+                                    </td>
+                                    <td colspan="3"><button type="submit" class="btn btn-warning btn-block">Add</button></td>
                                   </tr>
                                 </table>
                               </form>
@@ -142,7 +160,7 @@
                 <div class="form-group">
                 <div class="col-md-12" id="app_alert"></div>
                   <div class="col-sm-12 table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="tbl_ing_modal">
+                    <table class="table table-striped table-bordered table-hover">
                         <tr>
                           <td colspan="2">
                               <select class="form-control" name="ingredient">
@@ -164,12 +182,13 @@
                             </div>
                           </td>
                         </tr>
+                    </table>
+                    <table class="table table-striped table-bordered table-hover" id="tbl_ing_modal">
                       <tr>
                         <th>Name</th>
                         <th width="50px">Quantity</th>
                         <th>Action</th>
                       </tr>
-
                     </table>
                   </div>
                 </div>
@@ -194,48 +213,7 @@
           <h4 class="modal-title">Menu Details</h4>
         </div>
         <div class="modal-body">
-            <div class="container-fluid">
-              <form class="form-horizontal" id="add_menu_form" method="post" role="form" onsubmit="return false">
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Menu Name</label>
-                  <div class="col-sm-9">
-                    <input class="form-control " disabled type="text" required value="Caldereta">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Price</label>
-                  <div class="col-sm-9">
-                    <input class="form-control " disabled type="number" value="100">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Category</label>
-                  <div class="col-sm-9">
-                    <input class="form-control " disabled type="text" value="Main Dish">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Menu Owner</label>
-                  <div class="col-sm-9">
-                    <input class="form-control " disabled type="text" value="Canto Fresco">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-12 table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                      <tr>
-                        <th>Name</th>
-                        <th width="50px">Quantity</th>
-                      </tr>
-                      <tr>
-                        <td>Pasta</td>
-                        <td>2</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <div class="container-fluid" id="view_ing"></div>
         </div>
     </div>
   </div>

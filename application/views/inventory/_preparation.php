@@ -8,11 +8,18 @@
       <tr>
         <td><strong>Before Prep</strong></td>
         <td>
-          <select class="form-control">
-            <option>-select item-</option>
-            <option>Pork</option>
-            <option>Bangus</option>
-          </select>
+              <select class="form-control" name="before_item" required>
+                <option value="0">-Select Item-</option>
+                 <?php
+                $it = $this->Inventory_model->get_item();
+                foreach ($it as $key => $value) {
+                    $ctr = $this->Inventory_model->count_before_prep_stock($value['id']);
+                    if ($ctr['stock'] > 0) {
+                        echo "<option value='".$value['id']."|".$ctr['stock']."|".$ctr['unit']."'>".$value['ingredient_name']."</option>";
+                    }
+                }
+              ?>
+              </select>
         </td>
         <td><input class="form-control" type="text" name="stock" disabled required placeholder="Remaining Stock" value="Stock: 4Kg"></td>
         <td><input class="form-control" type="number" name="out_quantity" required placeholder="pull-out quantity"></td>
@@ -21,11 +28,15 @@
       <tr>
         <td><strong>After Prep</strong></td>
         <td>
-          <select class="form-control">
-            <option>-select item-</option>
-            <option>Pork</option>
-            <option>Bangus</option>
-          </select>
+              <select class="form-control" name="item" required>
+                <option>-Select Item-</option>
+                 <?php
+                $it = $this->Inventory_model->get_after_prep();
+                foreach ($it as $key => $value) {
+                  echo "<option value='".$value['id']."'>".$value['ingredient_name']."</option>";
+                }
+              ?>
+              </select>
         </td>
         <td><input class="form-control" type="number" name="in_quantity" required placeholder="prep quantity"></td>
         <td><input class="form-control" type="text" name="price2" disabled required placeholder="Remaining Stock" value="Price: 600"></td>

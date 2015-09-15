@@ -25,7 +25,23 @@ class Employees extends CI_Model
 	}
 
 	function get_restaurant(){
-		$this->db->select('restaurant');
+		$this->db->get('restaurant');
+	}
+
+	function check_desig($desig){
+		$this->db->where('designation_name', $desig);
+		$query = $this->db->get('designation');
+		return $query->num_rows();
+	}
+
+	function add_desig($data){
+		$this->db->insert('designation', $data);
+	}
+
+	function delete_desig($id){
+		$this->db->where('id',$id);
+		$this->db->delete('designation');
+
 	}
 }
 

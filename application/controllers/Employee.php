@@ -39,6 +39,32 @@
 				$this->load->view('employee/tables/emp_table');
 			}
 		}
+
+		function add_desig(){
+
+			$data = array(
+				'designation_name' => $this->input->post('desig'),
+				'rate'			   => $this->input->post('salary')
+			);
+
+			$this->load->model('employees');
+
+			$check = $this->employees->check_desig($this->input->post('desig'));
+
+			if ($check > 0) {
+				echo "err1";
+			}
+			else {
+				$this->employees->add_desig($data);
+				$this->load->view('employee/tables/desig_table');
+			}
+		}
+
+		function delete_desig(){
+				$this->load->model('employees');
+				$this->employees->delete_desig($this->input->post('id'));
+
+		}
 		
 	}
 

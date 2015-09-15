@@ -22,7 +22,8 @@ class Model_Menu extends CI_Model
 		return $query->row_array();
 	}
 
-	function check_ing($ing){
+	function check_ing($ing, $type){
+		$this->db->where('type', $type);
 		$this->db->where('ingredient_name', $ing);
 		$this->db->select('id');
 		return $this->db->get('item')->num_rows();
@@ -54,6 +55,28 @@ class Model_Menu extends CI_Model
 		return $query->result_array();
 	}
 
+	function get_spec_menu($id){
+		$query = $this->db->query("SELECT a.*, b.cat_name, c.restaurant_name
+								   FROM menu a, category b, restaurant c
+								   WHERE a.category = b.id
+								   AND a.menu_owner = c.id
+								   AND a.id = $id
+								   ORDER BY a.menu_name
+		");
+		return $query->row_array();
+	}
+
+	function get_menu_ing($id){
+		$query = $this->db->query("SELECT a.*, b.cat_name, c.restaurant_name
+								   FROM menu a, category b, restaurant c
+								   WHERE a.category = b.id
+								   AND a.menu_owner = c.id
+								   AND a.id = $id
+								   ORDER BY a.menu_name
+		");
+		return $query->result_array();
+	}
+
 	function check_menu($menu){
 		$this->db->where('menu_name', $menu);
 		$this->db->select('id');
@@ -62,6 +85,30 @@ class Model_Menu extends CI_Model
 
 	function add_menu($data){
 		$this->db->insert('menu', $data);
+		return $this->db->insert_id();
+	}
+
+	function add_menu_ing($data){
+		$this->db->insert('menu_detail', $data);
+	}
+
+	function delete_menu($id){
+		$this->db->where('id',$id);
+		$this->db->delete('menu');
+		$this->db->where('menu',$id);
+		$this->db->delete('menu_detail');
+
+	}
+
+	function delete_ing($id){
+		$this->db->where('id',$id);
+		$this->db->delete('item');
+
+	}
+
+	function delete_cat($id){
+		$this->db->where('id',$id);
+		$this->db->delete('category');
 	}
 }
 

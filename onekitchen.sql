@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2015 at 05:13 PM
+-- Generation Time: Sep 16, 2015 at 01:56 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -47,7 +47,14 @@ CREATE TABLE IF NOT EXISTS `bill_batch` (
   `date` date NOT NULL,
   `customer` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `bill_batch`
+--
+
+INSERT INTO `bill_batch` (`id`, `bill_no`, `date`, `customer`) VALUES
+(1, 123123, '0000-00-00', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -61,7 +68,14 @@ CREATE TABLE IF NOT EXISTS `bill_detail` (
   `menu` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `bill_detail`
+--
+
+INSERT INTO `bill_detail` (`id`, `bill_id`, `menu`, `quantity`) VALUES
+(1, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -73,15 +87,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`id`, `cat_name`) VALUES
-(1, 'main dish'),
-(2, 'appetizer');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,16 @@ CREATE TABLE IF NOT EXISTS `delivery` (
   `price` decimal(10,2) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `delivery`
+--
+
+INSERT INTO `delivery` (`id`, `batch_id`, `ingredient`, `stock`, `price`, `unit`) VALUES
+(1, 1, 1, 10, '200.00', 'Kg'),
+(2, 1, 3, 5, '180.00', 'Kg'),
+(3, 2, 1, 7, '180.00', 'Kg');
 
 -- --------------------------------------------------------
 
@@ -136,7 +151,15 @@ CREATE TABLE IF NOT EXISTS `delivery_batch` (
   `date` date NOT NULL,
   `in_charge` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `delivery_batch`
+--
+
+INSERT INTO `delivery_batch` (`id`, `date`, `in_charge`) VALUES
+(1, '0000-00-00', 1),
+(2, '0000-00-00', 14);
 
 -- --------------------------------------------------------
 
@@ -149,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `designation` (
   `designation_name` varchar(30) NOT NULL,
   `rate` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `designation`
@@ -157,7 +180,11 @@ CREATE TABLE IF NOT EXISTS `designation` (
 
 INSERT INTO `designation` (`id`, `designation_name`, `rate`) VALUES
 (1, 'Waiter', '0.00'),
-(2, 'Dish Washer', '0.00');
+(2, 'Dish Washer', '0.00'),
+(3, 'manager', '3.00'),
+(4, 'security', '3.00'),
+(5, 'boy', '250.00'),
+(6, 'hostess', '6.00');
 
 -- --------------------------------------------------------
 
@@ -194,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `tin_no` varchar(15) NOT NULL,
   `restaurant` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `employees`
@@ -212,7 +239,13 @@ INSERT INTO `employees` (`id`, `emp_id`, `fname`, `lname`, `mname`, `address`, `
 (9, '', 'oliver', 'lacabe', 'pelenio', 'san miguel, leyte', 2, 2147483647, '123123123123123', 2),
 (10, '', 'oliver', 'lacabe', 'pelenio', 'san miguel, leyte', 2, 2147483647, '123123123123123', 2),
 (11, '', 'asd', 'asd', 'asd', 'asd', 2, 0, 'asd', 1),
-(12, '', 'asdasd', 'aS', 'A', 'as', 2, 0, 'AAAAAaaaa', 1);
+(12, '', 'asdasd', 'aS', 'A', 'as', 2, 0, 'AAAAAaaaa', 1),
+(13, '', 'asdf', 'fasdf', 'asdf', 'asd', 2, 0, 'asdf', 1),
+(14, '', 'asd', 'asd', 'fgh', 'fghfgh', 1, 0, 'fghfgh', 2),
+(15, '', 'asd', 'asd', 'fgh', 'fghfgh', 1, 0, 'fghfgh', 2),
+(16, '', 'asd', 'asd', 'fgh', 'fghfgh', 1, 0, 'fghfgh', 2),
+(17, '', 'asd', 'asd', 'fgh', 'fghfgh', 1, 0, 'fghfgh', 2),
+(18, '', 'gg', 'gg', 'gg', 'gg', 2, 0, 'gg', 2);
 
 -- --------------------------------------------------------
 
@@ -224,24 +257,21 @@ CREATE TABLE IF NOT EXISTS `item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ingredient_name` varchar(50) NOT NULL,
   `type` varchar(30) NOT NULL,
+  `unit` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`id`, `ingredient_name`, `type`) VALUES
-(1, 'Cheese', 'ingredient'),
-(2, 'asd', 'ingredient'),
-(3, 'Ham', 'ingredient'),
-(4, 'Ham', 'ingredient'),
-(5, 'Ham', 'ingredient'),
-(6, 'asd', 'ingredient'),
-(7, 'asd2', 'ingredient'),
-(8, 'cheese', 'ingredient'),
-(9, 'oo', 'ingredient'),
-(10, 'wewe', 'ingredient');
+INSERT INTO `item` (`id`, `ingredient_name`, `type`, `unit`) VALUES
+(1, 'Pork', 'Before Prep', ''),
+(2, 'Beef', 'Before Prep', ''),
+(3, 'bangus', 'Before Prep', ''),
+(5, 'Pasta', 'Before Prep', ''),
+(7, 'Spare Ribs', 'After Prep', ''),
+(8, 'Pork Steak', 'After Prep', '');
 
 -- --------------------------------------------------------
 
@@ -268,6 +298,19 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `menu_owner` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `category` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `menu_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu` int(11) NOT NULL,
+  `ing` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -314,6 +357,32 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prepared_items`
+--
+
+CREATE TABLE IF NOT EXISTS `prepared_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prep_date` date NOT NULL,
+  `ingredient` int(11) NOT NULL,
+  `pull_qty` int(11) NOT NULL,
+  `prep_ingredient` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `prepared_items`
+--
+
+INSERT INTO `prepared_items` (`id`, `prep_date`, `ingredient`, `pull_qty`, `prep_ingredient`, `stock`, `price`) VALUES
+(1, '2015-09-16', 1, 2, 7, 2, '191.76'),
+(2, '2015-09-16', 1, 6, 7, 10, '115.06'),
+(3, '2015-09-16', 1, 4, 7, 5, '153.41');
 
 -- --------------------------------------------------------
 

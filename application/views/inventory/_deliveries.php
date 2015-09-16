@@ -8,13 +8,13 @@
         </tr>
         <tr>
           <td width="10px;">
-              <label class="control-label">Item</label> 
+              <label class="control-label">Item</label>
           </td>
           <td>
-              <select class="form-control" name="item" required> 
+              <select class="form-control" name="item" required>
                 <option>-Select Item-</option>
                  <?php
-                $it = $this->Inventory_model->get_item();
+                $it = $this->inventory_model->get_before_prep();
                 foreach ($it as $key => $value) {
                   echo "<option value='".$value['id']."'>".$value['ingredient_name']."</option>";
                 }
@@ -44,7 +44,7 @@
           </td>
         </tr>
       </table>
-      </form> 
+      </form>
 
       <form id="del" onsubmit="return false" >
       <table class="table table-bordered table-striped table-hover">
@@ -55,7 +55,7 @@
             <select class="form-control input-sm" name="receiver" required>
               <option value="0">select receiver</option>
               <?php
-                $rec = $this->Inventory_model->get_receiver();
+                $rec = $this->inventory_model->get_receiver();
                 foreach ($rec as $key => $value) {
                   echo "<option value='".$value['id']."'>".$value['fname']." ".$value['lname']." ".$value['mname']."</option>";
                 }

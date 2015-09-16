@@ -15,9 +15,10 @@ $(document).ready(function(){
             }
             else{
                 $('#ing_list').html(data);
-                delete_ing();
                 var alert = "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><strong>Success!</strong> Ingredient added.</div>";
                 $('#ing_alert').html(alert);
+                $('input[name=ingredient]').val('');
+                $('select[name=type]').val('0');
                 delete_ing();
             }
         });

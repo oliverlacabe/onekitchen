@@ -25,21 +25,21 @@
 <div class="jumbotron">
 	<div class="container-fluid">
 		<div class="col-md-4">
-		  	
+		  	lalalalalalaalalaalalalalaalalaalalalalaal
 		</div>
 		<div class="col-md-8">
-			<h1 class="welcome">Welcome to 
+			<h1 class="welcome">Welcome to
 			<img class="logo" src="<?php echo base_url('assets/images/ayo2.jpg') ?>"></h1>
 		  	<p style="color: #FFF">
-          Ayo Cafe is offering you the best food with friendly service in the 
-          Leyte-Samar area. We have been serving good food to local 
-          customers as well as tourists and balikbayans who can attest to 
+          Ayo Cafe is offering you the best food with friendly service in the
+          Leyte-Samar area. We have been serving good food to local
+          customers as well as tourists and balikbayans who can attest to
           our delicious food and great service.
         </p>
 		  	<p>
 		  		<a class="btn btn-warning btn-lg" role="button">Contact Us</a>
 		  	</p>
 		</div>
-		
+
 	</div>
 </div>
